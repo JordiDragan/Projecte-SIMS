@@ -1,0 +1,51 @@
+#bottomBar {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	justify-content: center;
+	pointer-events: auto;
+	width: 100%;
+	max-width: 520px;
+	background: var(--color-mint);
+	border-radius: 18px 18px 0 0;
+	padding: 18px 20px;
+	box-shadow: 0 6px 22px var(--color-forest);
+	border: 1px solid var(--color-forest);
+}
+
+.scan-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 12px;
+	background: white;
+	border: 2px solid var(--color-forest);
+	padding: 12px 20px;
+	border-radius: 46px;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.scan-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 28px;
+	height: 28px;
+	border-radius: 6px;
+	background: transparent;
+}
+
+img.scan-icon {
+	display: block;
+	width: 22px;
+	height: 22px;
+}
+
+.scan-text { font-weight: 600; }
+
+@media (min-width: 640px) {
+	.bottom-card { padding: 22px 28px; }
+}
+
