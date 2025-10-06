@@ -11,6 +11,13 @@
 
 ## For developers
 
+### Branch conventions
+Use pascal case and short names please
+
+- feature/`Feature`
+
+Example: `feature/AddSideBar`
+
 ### Commit conventions
 
 Use short, semantic commit messages (Conventional Commits style):
