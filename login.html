@@ -6,41 +6,24 @@
     <title>Login - Blink</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Importar la fuente Montserrat desde Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'primary': '#0D6344',
-                        'primary-light': '#CAF0D8',
-                        'accent': '#7E3FBC',
-                        'accent-light': '#CB97FF'
-                    },
-                    fontFamily: {
-                        'montserrat': ['Montserrat', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </head>
 <body class="bg-gray-50 min-h-screen flex font-montserrat">
-    <!-- Panel izquierdo - Formulario de login -->
+    <!-- Left Panel-->
     <div class="w-full md:w-1/2 lg:w-2/5 xl:w-1/3 bg-white p-8 md:p-12 flex flex-col justify-center">
-        <!-- Logo y título -->
+        <!-- Title and logo -->
         <div class="mb-10 text-center">
-            <!-- Logo escritorio -->
+
             <img 
                 src="/assets/logos/logoPC.png" 
                 alt="Logo escritorio" 
                 class="hidden md:block mx-auto max-w-xs"
             >
 
-            <!-- Logo para móvil -->
+
             <div class="flex justify-center md:hidden mb-4">
                 <img 
                     src="/assets/logos/logoMobile.png" 
@@ -53,7 +36,7 @@
         <form class="space-y-6">
             <h2 class="text-3xl font-bold text-gray-800 mb-2">Login</h2>
             
-            <!-- Campo Email -->
+            <!-- Mail -->
             <div>
                 <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
                 <div class="relative">
@@ -69,7 +52,7 @@
                 </div>
             </div>
             
-            <!-- Campo Password -->
+            <!-- Password -->
             <div>
                 <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
                 <div class="relative">
@@ -85,7 +68,6 @@
                 </div>
             </div>
             
-            <!-- Recordar y olvidar contraseña -->
             <div class="flex justify-between items-center">
                 <label class="flex items-center">
                     <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary">
@@ -96,24 +78,23 @@
                 </a>
             </div>
             
-            <!-- Botón de Login -->
+            <!-- Login -->
             <button 
                 type="submit" 
-                class="w-full bg-primary text-white py-3 px-4 rounded-lg font-semibold hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-all shadow-md flex items-center justify-center"
-            >
+                class="w-full bg-primary text-white py-3 px-4 rounded-lg font-semibold hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-all shadow-md flex items-center justify-center">
                 <i class="fas fa-sign-in-alt mr-2"></i>
                 Login
             </button>
         </form>
         
-        <!-- Separador -->
+        <!-- Separator -->
         <div class="flex items-center my-8">
             <div class="flex-grow border-t border-gray-300"></div>
 
             <div class="flex-grow border-t border-gray-300"></div>
         </div>
         
-        <!-- Enlace de registro -->
+        <!-- Register link -->
         <div class="text-center mt-8">
             <p class="text-gray-600">Not registered? <a href="#" class="inline-block mt-2 text-primary hover:text-primary/80 font-semibold transition-colors">
                 Create an acount
@@ -122,27 +103,9 @@
         </div>
     </div>
     
-    <!-- Panel derecho - Información de Blink -->
+    <!-- Right Panel -->
     <div class="hidden md:flex flex-1 bg-gradient-to-br from-primary to-primary-light items-center justify-center p-8">
-        <!-- Aquí puedes agregar contenido adicional para el panel derecho -->
-    </div>
 
-    <style>
-        /* Definición de colores personalizados */
-        .bg-primary { background-color: #0D6344; }
-        .bg-primary-light { background-color: #CAF0D8; }
-        .text-primary { color: #0D6344; }
-        .bg-accent { background-color: #7E3FBC; }
-        .text-accent { color: #7E3FBC; }
-        .text-accent-light { color: #CB97FF; }
-        .border-primary { border-color: #0D6344; }
-        .focus\:ring-primary:focus { --tw-ring-color: #0D6344; }
-        .focus\:border-primary:focus { border-color: #0D6344; }
-        
-        /* Aplicar Montserrat a todos los elementos de texto */
-        body {
-            font-family: 'Montserrat', sans-serif;
-        }
-    </style>
+    </div>
 </body>
 </html>
