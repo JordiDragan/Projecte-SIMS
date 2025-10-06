@@ -2,7 +2,7 @@
 
 ## Usage
 
-1. Copy `apikey.js.example` to `apikey.js`.
+1. Copy `apikey.js.example` to `Apikey.js`.
 2. Open `apikey.js` and replace the `GOOGLE_MAPS_API_KEY` constant with your key:
 
    ```js
