@@ -4,6 +4,9 @@ const svg = `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(
   </svg>`
 )}`;
 
+const selected = document.getElementById('selectedCarInfo');
+
+
 function randomPointAround(centerLatLng, radiusMeters) {
   const radiusInDegrees = radiusMeters / 111320; // approx conversion
   const u = Math.random();
@@ -39,7 +42,34 @@ export function createRandomMarkers(map, center, count, radiusMeters ) {
       anchor: new google.maps.Point(14,28) }, title: `Point ${i+1}` 
     });
 
+    m.addListener('click', () => {
+      const bottom = document.getElementById('bottomBar');
+      if (bottom) bottom.classList.add('expanded');
+      if (selected) selected.classList.remove('hidden');
+      if (selected) selected.classList.add('grid');
+    });
+
     markers.push(m);
   }
   return markers;
+}
+
+export function wireBottomBarToggle(map) {
+  const bottom = document.getElementById('bottomBar');
+  if (!bottom || !map) return;
+
+  // Collapse on map click
+  map.addListener('click', () => {
+    bottom.classList.remove('expanded');
+    if (selected) selected.classList.add('hidden');
+  });
+
+  // Collapse when clicking outside the bottom bar
+  document.addEventListener('click', (e) => {
+    const target = e.target;
+    if (!bottom.contains(target) && !target.closest('.gm-style')) {
+      bottom.classList.remove('expanded');
+      if (selected) selected.classList.add('hidden');
+    }
+  });
 }

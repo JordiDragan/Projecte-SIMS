@@ -4,7 +4,8 @@
 	right: 0;
 	bottom: 0;
 	display: flex;
-	justify-content: center;
+	flex-direction: column;
+	align-items: center;
 	pointer-events: auto;
 	width: 100%;
 	max-width: 520px;
@@ -13,6 +14,27 @@
 	padding: 18px 20px;
 	box-shadow: 0 6px 22px var(--color-forest);
 	border: 1px solid var(--color-forest);
+	overflow: hidden;
+	max-height: 6rem; 
+	transition: box-shadow 220ms ease, padding 220ms ease, max-height 220ms ease, transform 220ms ease;
+}
+
+#bottomBar.expanded {
+	max-height: 15rem;
+	box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+}
+
+#selectedCarInfo {
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr;
+	gap: 8px;
+
+	width: 100%;
+	
+	place-items: center;
+	text-align: center;
+
+	margin-bottom: 10px;
 }
 
 .scan-btn {
@@ -25,6 +47,7 @@
 	border-radius: 46px;
 	font-size: 16px;
 	cursor: pointer;
+	max-height: 45%;
 }
 
 .scan-icon {
@@ -48,4 +71,6 @@ img.scan-icon {
 @media (min-width: 640px) {
 	.bottom-card { padding: 22px 28px; }
 }
+
+
 
