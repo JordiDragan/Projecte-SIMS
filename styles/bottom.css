@@ -16,27 +16,38 @@
 	border: 1px solid var(--color-forest);
 	overflow: hidden;
 	max-height: 6rem; 
-	transition: box-shadow 220ms ease, padding 220ms ease, max-height 220ms ease, transform 220ms ease;
-}
 
+	transform: translateY(0);
+
+	transition: transform 220ms ease, max-height 220ms ease;
+
+}
 #bottomBar.expanded {
 	max-height: 15rem;
-	box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+}
+
+#bottomBar.sliding-down {
+	transform: translateY(110%);
+	max-height: 0.1rem;
 }
 
 #selectedCarInfo {
 	grid-template-columns: 1fr 1fr;
-	grid-template-rows: 1fr 1fr;
-	gap: 8px;
-
+	grid-template-rows: 0.3fr 1fr;
 	width: 100%;
-	
+	row-gap: 10px;
 	place-items: center;
 	text-align: center;
 
 	margin-bottom: 10px;
 }
 
+#car_street,
+#car_plate {
+  display: flex;
+  justify-self: center;
+  align-self: end;
+}
 .scan-btn {
 	display: inline-flex;
 	align-items: center;
@@ -48,7 +59,6 @@
 	font-size: 16px;
 	cursor: pointer;
 	max-height: 45%;
-}
 
 .scan-icon {
 	display: inline-flex;

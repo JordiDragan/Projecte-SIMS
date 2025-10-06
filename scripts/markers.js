@@ -5,6 +5,7 @@ const svg = `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(
 )}`;
 
 const selected = document.getElementById('selectedCarInfo');
+const bottom = document.getElementById('bottomBar');
 
 
 function randomPointAround(centerLatLng, radiusMeters) {
@@ -43,10 +44,18 @@ export function createRandomMarkers(map, center, count, radiusMeters ) {
     });
 
     m.addListener('click', () => {
-      const bottom = document.getElementById('bottomBar');
-      if (bottom) bottom.classList.add('expanded');
-      if (selected) selected.classList.remove('hidden');
-      if (selected) selected.classList.add('grid');
+      bottom.classList.add('sliding-down')
+
+      setTimeout(() => {
+
+        selected.classList.add('grid');
+        selected.classList.remove('hidden'); 
+        bottom.classList.remove('sliding-down')
+        bottom.classList.add('expanded');
+
+      },200)
+      
+      
     });
 
     markers.push(m);
@@ -54,22 +63,35 @@ export function createRandomMarkers(map, center, count, radiusMeters ) {
   return markers;
 }
 
-export function wireBottomBarToggle(map) {
-  const bottom = document.getElementById('bottomBar');
-  if (!bottom || !map) return;
-
+export function bottomBarToggle(map) {
   // Collapse on map click
   map.addListener('click', () => {
-    bottom.classList.remove('expanded');
-    if (selected) selected.classList.add('hidden');
+    bottom.classList.add('sliding-down')
+
+    setTimeout(() => {
+
+        selected.classList.remove('grid');
+        selected.classList.add('hidden'); 
+        bottom.classList.remove('sliding-down')
+        bottom.classList.remove('expanded');
+
+      },200)
   });
 
   // Collapse when clicking outside the bottom bar
   document.addEventListener('click', (e) => {
     const target = e.target;
     if (!bottom.contains(target) && !target.closest('.gm-style')) {
-      bottom.classList.remove('expanded');
-      if (selected) selected.classList.add('hidden');
+      bottom.classList.add('sliding-down')
+
+      setTimeout(() => {
+
+        selected.classList.remove('grid');
+        selected.classList.add('hidden'); 
+        bottom.classList.remove('sliding-down')
+        bottom.classList.remove('expanded');
+
+      },200)
     }
   });
 }
