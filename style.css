@@ -1,0 +1,15 @@
+/* Definición de colores personalizados */
+.bg-primary { background-color: #0D6344; }
+.bg-primary-light { background-color: #CAF0D8; }
+.text-primary { color: #0D6344; }
+.bg-accent { background-color: #7E3FBC; }
+.text-accent { color: #7E3FBC; }
+.text-accent-light { color: #CB97FF; }
+.border-primary { border-color: #0D6344; }
+.focus\:ring-primary:focus { --tw-ring-color: #0D6344; }
+.focus\:border-primary:focus { border-color: #0D6344; }
+        
+        /* Aplicar Montserrat a todos los elementos de texto */
+body {
+    font-family: 'Montserrat', sans-serif;
+}

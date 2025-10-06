@@ -1,0 +1,12 @@
+:root {
+  /* Palette from the attachment */
+  --color-forest: #0D6344;
+  --color-mint: #CAF0D8;
+  --color-lilac: #CB97FF;
+  --color-purple: #7E3FBC;
+  /* semantic aliases */
+  --color-primary: var(--color-forest);
+  --color-muted: var(--color-mint);
+  --color-accent: var(--color-lilac);
+  --color-accent-2: var(--color-purple);
+}
