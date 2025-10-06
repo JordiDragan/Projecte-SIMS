@@ -1,0 +1,1 @@
+GOOGLE_MAPS_API_KEY = 'AIzaSyDoTkUyh9rSHWp3GrndettWWJlajQmr0oM'
