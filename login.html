@@ -9,23 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'primary': '#0D6344',
-                        'primary-light': '#CAF0D8',
-                        'accent': '#7E3FBC',
-                        'accent-light': '#CB97FF'
-                    },
-                    fontFamily: {
-                        'montserrat': ['Montserrat', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </head>
 <body class="bg-gray-50 min-h-screen flex font-montserrat">
     <!-- Left Panel-->
@@ -123,21 +107,5 @@
     <div class="hidden md:flex flex-1 bg-gradient-to-br from-primary to-primary-light items-center justify-center p-8">
 
     </div>
-
-    <style>
-        .bg-primary { background-color: #0D6344; }
-        .bg-primary-light { background-color: #CAF0D8; }
-        .text-primary { color: #0D6344; }
-        .bg-accent { background-color: #7E3FBC; }
-        .text-accent { color: #7E3FBC; }
-        .text-accent-light { color: #CB97FF; }
-        .border-primary { border-color: #0D6344; }
-        .focus\:ring-primary:focus { --tw-ring-color: #0D6344; }
-        .focus\:border-primary:focus { border-color: #0D6344; }
-        
-        body {
-            font-family: 'Montserrat', sans-serif;
-        }
-    </style>
 </body>
 </html>
