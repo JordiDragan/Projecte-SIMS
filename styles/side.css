@@ -116,3 +116,10 @@
     width: 100%;
     justify-content: space-between;
 }
+
+#goBackBtn {
+    position: fixed;
+
+    top: 1rem;
+    right: 2rem;
+}
