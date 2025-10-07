@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
 
+:root {
+  --color-forest: #0D6344;
+  --color-mint: #ddfae8;
+  --color-lilac: #CB97FF;
+  --color-purple: #7E3FBC;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -7,10 +14,16 @@
     font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 }
 
+body {
+    background-color: var(--color-mint);
+}
+
 main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    
+    height: 100vh;
 }
 
 #camera {
@@ -20,16 +33,11 @@ main {
     justify-content: center;
     height: 70vh;
     width: 90%;
-    background-color: #f0f0f0;
-
-    border-color: #CAF0D8;
-    border-style: solid;
-    border-width: 3px;
 }
 
 .header {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 2rem;
 }
 
 .header h1 {
@@ -43,24 +51,31 @@ main {
 }
 
 #buttons {
-    margin-top: 20px;
     display: flex;
-    justify-content: space-between;
-    gap: 15px;
-    padding: 0 2em 0 2em;
+
+    justify-content: center;
+    align-items: center;
+    
+    margin: auto;
 }
 
 .btn {    
     border: none;
-    color: rgb(0, 0, 0);
-    padding: 15px;
+    color: whitesmoke;
+    background-color: var(--color-purple);
+    padding: 20px;
     text-align: center;
-    text-decoration: none;
-    display: inline-flex;
+    
+    display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1rem;
-    border-style: solid;    
-    border-radius: 50%;
+    border-radius: 10px;
+    gap: 10px;
 }
 
+.goBackBtn {
+    position: fixed;
+
+    top: 1rem;
+    left: 1rem;
+}
