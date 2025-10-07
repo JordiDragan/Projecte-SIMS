@@ -1,19 +1,118 @@
 #sideBarButton {
     position: fixed;
     left: 20px;
-	top: 30px;
+    top: 30px;
+    z-index: 50;
 }
 
 #sideBar{
     position: fixed;
     top: 0;
     left: 0;
-
-
+    display: flex;
     flex-direction: column;
-
+    align-items: center;
+    padding: 3rem 1rem 1rem 0;
     height: 100vh;
-    width: 65%;
+    width: 75%;
 
-    background-color: red;
+    border-right: 1px solid var(--color-forest);
+
+    background-color: var(--color-mint);
+    transform: translateX(-105%);
+    opacity: 0;
+    transition: transform 320ms cubic-bezier(.2,.9,.2,1), opacity 220ms ease, box-shadow 320ms ease;
+    z-index: 45;
+    box-shadow: 0 4px 12px var(--color-forest);
+}
+
+#sideBar.open-slide{
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+    box-shadow: 0 24px 48px rgba(16,24,40,0.18), 0 6px 18px rgba(16,24,40,0.08);
+}
+
+#sideBar.close-slide{
+    transform: translateX(-105%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+#sideBarIcon img {
+    width: 120px;
+}
+
+#userNameSurname {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+}
+
+#userBalance {
+    font-size: 1rem;
+}
+
+#userBalance b {
+    color: var(--color-purple);
+}
+
+#userStats{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    width: 80%;
+    gap: 1rem;
+}
+
+.userStatsSub{
+    color: #5d5d5d;
+    font-size: 0.8rem;
+}
+
+
+
+#sideBarPurchases {
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    color: white;
+    
+    width: 100%;
+
+    justify-content: center;
+    align-items: center;
+  
+    gap: 0.7rem;
+}
+
+.sideBarPurchasesButton {
+    display: flex;
+    background-color: var(--color-purple);
+
+    justify-content: center;
+    align-items: center;
+    
+    border: black;
+    border-width: 2px;
+
+    width: 80%;
+    height: 2.4rem;
+
+    text-align: center;
+
+    gap: 0.5rem;
+    
+}
+
+.sideBarPurchasesButton svg {
+    width: 20px;
+}
+
+#sideBarUtilityButtons {
+    padding: 0 1rem 0 1rem;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
 }

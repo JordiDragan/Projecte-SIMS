@@ -94,18 +94,20 @@ export function createRandomMarkers(map, center, count, radiusMeters ) {
 export function bottomBarToggle(map) {
   // Collapse on map click
   map.addListener('click', () => {
-    BOTTOM.classList.add('sliding-down')
-
-    setTimeout(() => {
-      SELECTED.classList.remove('grid');
-      SELECTED.classList.add('hidden'); 
-      BOTTOM.classList.remove('sliding-down')
-      BOTTOM.classList.remove('expanded');
-      BOTTOM.classList.remove('get-up')
-      toggleActiveMarker(lastMarker)
-        
-
+    
+    if(BOTTOM.classList.contains('expanded')){
+      BOTTOM.classList.add('sliding-down')
+      setTimeout(() => {
+        SELECTED.classList.remove('grid');
+        SELECTED.classList.add('hidden'); 
+        BOTTOM.classList.remove('sliding-down')
+        BOTTOM.classList.remove('expanded');
+        BOTTOM.classList.remove('get-up')
+        toggleActiveMarker(lastMarker)
       },200)
+    }
+      
+
   });
 
   // Collapse when clicking outside the BOTTOM bar
