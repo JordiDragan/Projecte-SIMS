@@ -67,18 +67,22 @@ export function createRandomMarkers(map, center, count, radiusMeters ) {
       title: `Point ${i+1}` 
     });
 
+    //Expand
     m.addListener('click', () => {
       if( m == lastMarker ) return;
       BOTTOM.classList.add('sliding-down')
 
       setTimeout(() => {
+        BOTTOM.classList.add('expanded');
         SELECTED.classList.add('grid');
         SELECTED.classList.remove('hidden'); 
         BOTTOM.classList.remove('sliding-down')
-        BOTTOM.classList.add('expanded');
+        BOTTOM.classList.remove('get-up')
         toggleActiveMarker(m)
       },200)
+       
       
+    
       
     });
 
@@ -90,18 +94,20 @@ export function createRandomMarkers(map, center, count, radiusMeters ) {
 export function bottomBarToggle(map) {
   // Collapse on map click
   map.addListener('click', () => {
-    BOTTOM.classList.add('sliding-down')
-
-    setTimeout(() => {
+    
+    if(BOTTOM.classList.contains('expanded')){
+      BOTTOM.classList.add('sliding-down')
+      setTimeout(() => {
         SELECTED.classList.remove('grid');
         SELECTED.classList.add('hidden'); 
         BOTTOM.classList.remove('sliding-down')
         BOTTOM.classList.remove('expanded');
-
+        BOTTOM.classList.remove('get-up')
         toggleActiveMarker(lastMarker)
-        
-
       },200)
+    }
+      
+
   });
 
   // Collapse when clicking outside the BOTTOM bar
@@ -118,6 +124,7 @@ export function bottomBarToggle(map) {
         BOTTOM.classList.remove('expanded');
 
       },200)
+      toggleActiveMarker(lastMarker)
     }
   });
 }

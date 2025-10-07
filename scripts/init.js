@@ -3,7 +3,7 @@ import { createCenterMarker, createRandomMarkers, bottomBarToggle } from './mark
 
 const CENTER = { lat: 40.70922331914339, lng: 0.5771204885805513 };
 const ZOOM = 15
-const MARKERS_COUNT=10
+const MARKERS_COUNT= 5
 const RADIUS_MT_FROM_CENTER=600
 
 export function initMap() {
