@@ -76,6 +76,8 @@ video {
     border: none;
     color: whitesmoke;
     background-color: var(--color-purple);
+    box-shadow: 0 4px 12px var(--color-purple);
+
     padding: 20px;
     text-align: center;
     
@@ -92,3 +94,38 @@ video {
     top: 1rem;
     left: 1rem;
 }
+
+#keyboard {
+    height: 70vh;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#typedId{
+    width: 90%;
+    height: 4rem;
+    padding: 1rem;
+    border-radius: 10px;
+    font-size: 1.5rem;
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#submitIdBtn {
+    margin-top: 1rem;
+    width: 30%;
+    font-size: 1.2rem;
+    padding: 1rem;
+    font-weight: 600;
+    box-shadow: 0 4px 12px var(--color-purple);
+
+    
+}
+
+

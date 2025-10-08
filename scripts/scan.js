@@ -1,14 +1,29 @@
 const TYPE_ID_BTN = document.getElementById('typeIdBtn')
 const CAMERA_DIV = document.getElementById('camera')
 const KEYBOARD_INPUT = document.getElementById('typedId')
+const KEYBOARD_DIV = document.getElementById('keyboard')
+const TEXT_SUB = document.getElementById('textSub')
+const CHANGE_MODE_BTN = document.getElementById('changeModeText')
+const SCAN_QR_ICON = document.getElementById('scanQRicon')
+const TYPE_ID_ICON = document.getElementById('typeIdIcon')
 
 TYPE_ID_BTN.addEventListener('click', () => {
 	if( CAMERA_DIV.style.display === 'none' ){
 		CAMERA_DIV.style.display = 'flex';
 		KEYBOARD_INPUT.style.display = 'none';
+		KEYBOARD_DIV.style.display = 'none';
+		TEXT_SUB.innerText = 'Find the QR in the car';
+		CHANGE_MODE_BTN.innerText = 'Type ID';
+		SCAN_QR_ICON.style.display = 'block';
+		TYPE_ID_ICON.style.display = 'none';
 	}else{
 		CAMERA_DIV.style.display = 'none';
 		KEYBOARD_INPUT.style.display = 'flex';
+		KEYBOARD_DIV.style.display = 'flex';
+		TEXT_SUB.innerText = 'Type the ID manually';
+		CHANGE_MODE_BTN.innerText = 'Scan QR';
+		SCAN_QR_ICON.style.display = 'none';
+		TYPE_ID_ICON.style.display = 'block';
 	}
 });
 
