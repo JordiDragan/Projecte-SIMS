@@ -18,7 +18,7 @@ export function createMap(elementId, center, zoom) {
   const map = new google.maps.Map(document.getElementById(elementId), {
     center,
     zoom,
-    minZoom: zoom - 1,
+    //minZoom: zoom - 1,
     maxZoom: zoom + 3,
     styles: minimalGreenStyle,
     disableDefaultUI: true,
