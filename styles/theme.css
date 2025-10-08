@@ -1,7 +1,7 @@
 :root {
   /* Palette from the attachment */
   --color-forest: #0D6344;
-  --color-mint: #CAF0D8;
+  --color-mint: #ddfae8;
   --color-lilac: #CB97FF;
   --color-purple: #7E3FBC;
   /* semantic aliases */
@@ -12,7 +12,7 @@
 }
 
 .bg-primary { background-color: #0D6344; }
-.bg-primary-light { background-color: #CAF0D8; }
+.bg-primary-light { background-color: #ddfae8; }
 .text-primary { color: #0D6344; }
 .bg-accent { background-color: #7E3FBC; }
 .text-accent { color: #7E3FBC; }

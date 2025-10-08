@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+
+:root {
+  --color-forest: #0D6344;
+  --color-mint: #ddfae8;
+  --color-lilac: #CB97FF;
+  --color-purple: #7E3FBC;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+body {
+    background-color: var(--color-mint);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    height: 100vh;
+}
+
+#camera {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+    width: 90%;
+}
+
+#camera {
+    border-radius: 10px;
+    overflow: hidden;
+    background: #000; 
+}
+
+video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.header {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.header h1 {
+    font-size: 2rem;
+}
+
+.header h3 {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+#buttons {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    
+    margin: auto;
+}
+
+.btn {    
+    border: none;
+    color: whitesmoke;
+    background-color: var(--color-purple);
+    box-shadow: 0 4px 12px var(--color-purple);
+
+    padding: 20px;
+    text-align: center;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    gap: 10px;
+}
+
+.goBackBtn {
+    position: fixed;
+
+    top: 1rem;
+    left: 1rem;
+}
+
+#keyboard {
+    height: 70vh;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#typedId{
+    width: 90%;
+    height: 4rem;
+    padding: 1rem;
+    border-radius: 10px;
+    font-size: 1.5rem;
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#submitIdBtn {
+    margin-top: 1rem;
+    width: 30%;
+    font-size: 1.2rem;
+    padding: 1rem;
+    font-weight: 600;
+    box-shadow: 0 4px 12px var(--color-purple);
+
+    
+}
+
+

@@ -1,6 +1,9 @@
 const SIDEBAR = document.getElementById("sideBar")
 const SIDEBAR_BUTTON = document.getElementById("sideBarButton")
 const BOTTOM = document.getElementById("bottomBar")
+const SIDEBAR_CLOSE_BTN = document.getElementById("goBackBtn")
+
+SIDEBAR_CLOSE_BTN.addEventListener("click", closeSideBar)
 
 let isActive = false
 
