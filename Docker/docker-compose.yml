@@ -1,0 +1,39 @@
+version: '3.9'
+
+services:
+  web:
+    image: httpd:2.4
+    container_name: Blink_Docker
+    ports:
+      - "8080:80"
+    volumes:
+      - ./html:/usr/local/apache2/htdocs
+    restart: always
+
+  db:
+    image: postgres:15
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: qzn6FgX=S0C/3%(b
+      POSTGRES_DB: blinkdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: always
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ikervericat@iesmontsia.org
+      PGADMIN_DEFAULT_PASSWORD: vmua+G6Cf<S1Mn45
+    ports:
+      - "5053:80"
+    depends_on:
+      - db
+    restart: always
+
+volumes:
+  postgres_data:
