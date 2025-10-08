@@ -1,3 +1,17 @@
+const TYPE_ID_BTN = document.getElementById('typeIdBtn')
+const CAMERA_DIV = document.getElementById('camera')
+const KEYBOARD_INPUT = document.getElementById('typedId')
+
+TYPE_ID_BTN.addEventListener('click', () => {
+	if( CAMERA_DIV.style.display === 'none' ){
+		CAMERA_DIV.style.display = 'flex';
+		KEYBOARD_INPUT.style.display = 'none';
+	}else{
+		CAMERA_DIV.style.display = 'none';
+		KEYBOARD_INPUT.style.display = 'flex';
+	}
+});
+
 (function () {
 	const container = document.getElementById('camera');
 	if (!container) return;
