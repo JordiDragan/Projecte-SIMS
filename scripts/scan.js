@@ -14,16 +14,16 @@ TYPE_ID_BTN.addEventListener('click', () => {
 		KEYBOARD_DIV.style.display = 'none';
 		TEXT_SUB.innerText = 'Find the QR in the car';
 		CHANGE_MODE_BTN.innerText = 'Type ID';
-		SCAN_QR_ICON.style.display = 'block';
-		TYPE_ID_ICON.style.display = 'none';
+		SCAN_QR_ICON.style.display = 'none';
+		TYPE_ID_ICON.style.display = 'block';
 	}else{
 		CAMERA_DIV.style.display = 'none';
 		KEYBOARD_INPUT.style.display = 'flex';
 		KEYBOARD_DIV.style.display = 'flex';
 		TEXT_SUB.innerText = 'Type the ID manually';
 		CHANGE_MODE_BTN.innerText = 'Scan QR';
-		SCAN_QR_ICON.style.display = 'none';
-		TYPE_ID_ICON.style.display = 'block';
+		SCAN_QR_ICON.style.display = 'block';
+		TYPE_ID_ICON.style.display = 'none';
 	}
 });
 
