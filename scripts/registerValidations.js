@@ -161,26 +161,31 @@ form.addEventListener('submit', (e) => {
     return;
   }
 
-  // Save data in Local Storage
+  // Send data to registerValidations.php
   const userData = {
     name: name.value.trim(),
     email: email.value.trim(),
-    password: password.value
+    password: email.value,
   };
 
-  localStorage.setItem('registeredUser', JSON.stringify(userData));
+  fetch('/Docker/html/registerValidations.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json'},
+    body: JSON.stringify(userData)
+  })
 
-  const originalHTML = submitBtn.innerHTML;
-  submitBtn.disabled = true;
-  submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Creating account...';
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
+      form.reset();
+    } else {
+      alert(data.message || 'Error to connect with Database');
+    }
+  })
+  .catch(() => {
+    alert('Network error. Try again.');
+  });
 
-  setTimeout(() => {
-    form.reset();
-    submitBtn.disabled = false;
-    submitBtn.innerHTML = originalHTML;
-  }, 1000);
+  updateSubmitState();
 });
-
-updateSubmitState();
-
-});
+})
