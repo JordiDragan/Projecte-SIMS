@@ -161,14 +161,14 @@ form.addEventListener('submit', (e) => {
     return;
   }
 
-  // Send data to registerValidations.php
+  // Send data to processRegister.php
   const userData = {
     name: name.value.trim(),
     email: email.value.trim(),
-    password: email.value,
+    password: password.value,
   };
 
-  fetch('/Docker/html/registerValidations.php', {
+  fetch('/pages/processRegister.php', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json'},
     body: JSON.stringify(userData)
