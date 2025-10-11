@@ -178,6 +178,7 @@ form.addEventListener('submit', (e) => {
   .then(data => {
     if (data.success) {
       form.reset();
+      window.location.href = '/login.html'; // Cambia la ruta si tu login está en otra página
     } else {
       alert(data.message || 'Error to connect with Database');
     }

@@ -24,18 +24,20 @@ document.addEventListener('DOMContentLoaded', () => {
     return el;
   }
 
-  // Creación/asegurado de contenedores de error
+  // Error message containers
   ensureErrorEl(email);
   ensureErrorEl(password);
 
-  // Email regex simple y robusta para uso típico
+
+  // Email regex
   function isValidEmail(value) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
   }
   function isValidPassword(value) {
     return /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9]).{8,}/.test(value.trim());
   }
-  // --- Validadores ---
+
+  // Validations
   function validateEmail() {
     const value = email.value.trim();
     const err = document.getElementById(`${email.id}-error`);
@@ -44,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return false;
     }
     if (!isValidEmail(value)) {
-      err.textContent = 'Formato de email no válido.';
+      err.textContent = 'Invalid email format.';
       email.setAttribute('aria-invalid', 'true');
       return false;
     }
@@ -61,13 +63,13 @@ document.addEventListener('DOMContentLoaded', () => {
       return false;
     }
     if (value.length < 8) {
-      err.textContent = 'La contraseña debe tener al menos 8 caracteres.';
+      err.textContent = 'Your password must contain a minimum of 8 characters.';
       password.setAttribute('aria-invalid', 'true');
       return false;
     }
 
     if (!isValidPassword(value)) { 
-      err.textContent = 'La contraseña debe ser compleja';
+      err.textContent = 'The password must be complex.';
       password.setAttribute('aria-invalid', 'true');
       return false;
     };
@@ -76,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return true;
   }
 
-  // Habilita/deshabilita el botón submit y pinta feedback visual
+  // Enable & disable submit button
   function updateSubmitState() {
     const ok = validateEmail() && validatePassword();
     submitBtn.disabled = !ok;
@@ -84,7 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
     submitBtn.classList.toggle('cursor-not-allowed', !ok);
   }
 
-  // --- Eventos de campo (validación en tiempo real) ---
   email.addEventListener('input', () => {
     validateEmail();
     updateSubmitState();
@@ -95,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateSubmitState();
   });
 
-  // --- Toggle mostrar/ocultar contraseña (se añade dinámicamente) ---
+  // Show & hide password
   (function addPasswordToggle() {
     const wrapper = password.closest('.relative') || password.parentElement;
     const btn = document.createElement('button');
@@ -103,7 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.setAttribute('aria-label', 'Mostrar contraseña');
     btn.className = 'absolute inset-y-0 right-0 pr-3 flex items-center';
     btn.innerHTML = '<i class="fas fa-eye"></i>';
-    // aseguramos posicionamiento: wrapper debe ser relativo (ya lo es en tu HTML)
     wrapper.appendChild(btn);
 
     btn.addEventListener('click', () => {
@@ -113,6 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.innerHTML = isPassword ? '<i class="fas fa-eye-slash"></i>' : '<i class="fas fa-eye"></i>';
     });
   })();
+
 
   // --- Submit handler ---
   form.addEventListener('submit', async (e) => {
@@ -134,15 +135,16 @@ document.addEventListener('DOMContentLoaded', () => {
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Entrando...';
 
     try {
-      // Ejemplo de envío: sustituye la URL por tu endpoint real
-      const res = await fetch('/api/login', {
+      const res = await fetch('/pages/processLogin.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email.value.trim(), password: password.value })
       });
 
-      if (!res.ok) {
-        // Mostrar error general (crea un contenedor si hace falta)
+      const data = await res.json();
+      if (data.success) {
+        window.location.href = '/';
+      } else {
         let general = document.getElementById('login-general-error');
         if (!general) {
           general = document.createElement('p');
@@ -151,15 +153,10 @@ document.addEventListener('DOMContentLoaded', () => {
           general.setAttribute('role', 'alert');
           form.appendChild(general);
         }
-        const data = await res.json().catch(() => ({}));
         general.textContent = data.message || 'Credenciales incorrectas.';
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalHTML;
-        return;
       }
-
-      // Si todo ok, redirigir o manejar sesión
-      window.location.href = '/dashboard'; // cambia según tu app
     } catch (err) {
       console.error(err);
       alert('Error de red. Intenta más tarde.');
@@ -168,6 +165,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Inicializamos el estado del botón
   updateSubmitState();
 });

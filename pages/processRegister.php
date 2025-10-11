@@ -9,7 +9,11 @@ $user = getenv('POSTGRES_USER');
 $pass = getenv('POSTGRES_PASSWORD');
 
 if (!$db || !$user || !$pass) {
-    echo json_encode(['success' => false, 'message' => 'Database configuration is missing.']);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Database configuration is missing.',
+        'errors' => ['Database configuration is missing.']
+    ]);
     exit;
 }
 
@@ -21,7 +25,11 @@ try {
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
     ]);
 } catch (PDOException $e) {
-    echo json_encode(['success' => false, 'message' => 'DB connection error.']);
+    echo json_encode([
+        'success' => false,
+        'message' => 'DB connection error.',
+        'errors' => ['DB connection error.']
+    ]);
     exit;
 }
 
@@ -44,7 +52,11 @@ if (strlen($password) < 8) {
     $errors[] = 'The password must be at least 8 characters long.';
 }
 if (!empty($errors)) {
-    echo json_encode(['success' => false, 'errors' => $errors]);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Validation errors.',
+        'errors' => $errors
+    ]);
     exit;
 }
 
@@ -52,7 +64,11 @@ if (!empty($errors)) {
 $stmt = $pdo->prepare("SELECT 1 FROM users WHERE email = ?");
 $stmt->execute([$email]);
 if ($stmt->fetch()) {
-    echo json_encode(['success' => false, 'message' => 'This email has already been registered.']);
+    echo json_encode([
+        'success' => false,
+        'message' => 'This email has already been registered.',
+        'errors' => ['This email has already been registered.']
+    ]);
     exit;
 }
 
@@ -62,8 +78,15 @@ $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 try {
     $stmt = $pdo->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
     $stmt->execute([$name, $email, $hashedPassword]);
-    echo json_encode(['success' => true, 'message' => 'User registered successfully.']);
+    echo json_encode([
+        'success' => true,
+        'message' => 'User registered successfully.'
+    ]);
 } catch (PDOException $e) {
-    echo json_encode(['success' => false, 'message' => 'Error saving user.']);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Error saving user.',
+        'errors' => ['Error saving user.']
+    ]);
 }
 ?>
