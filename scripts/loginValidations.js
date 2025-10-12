@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   'use strict';
 
-  const FORM = document.getElementById('loginForm') || document.querySelector('form');
+  const FORM = document.getElementById('loginForm') || document.querySelector('FORM');
   const EMAIL = document.getElementById('email');
   const PASSWORD = document.getElementById('password');
   const SUBMIT_BTN = FORM.querySelector('button[type="submit"]');

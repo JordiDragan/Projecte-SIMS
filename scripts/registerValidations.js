@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   'use strict';
 
-  const FORM = document.getElementById('registerForm') || document.querySelector('form');
+  const FORM = document.getElementById('registerForm') || document.querySelector('FORM');
   const NAME = document.getElementById('name');
   const EMAIL = document.getElementById('email');
   const PASSWORD = document.getElementById('password');
