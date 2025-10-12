@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const wrapper = PASSWORD.closest('.relative') || PASSWORD.parentElement;
     const btn = document.createElement('button');
     btn.type = 'button';
-    btn.setAttribute('aria-label', 'Mostrar contraseña');
+    btn.setAttribute('aria-label', 'Show password');
     btn.className = 'absolute inset-y-0 right-0 pr-3 flex items-center';
     btn.innerHTML = '<i class="fas fa-eye"></i>';
     wrapper.appendChild(btn);
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => {
       const isPassword = PASSWORD.type === 'password';
       PASSWORD.type = isPassword ? 'text' : 'password';
-      btn.setAttribute('aria-label', isPassword ? 'Ocultar contraseña' : 'Mostrar contraseña');
+      btn.setAttribute('aria-label', isPassword ? 'Hide password' : 'Show password');
       btn.innerHTML = isPassword ? '<i class="fas fa-eye-slash"></i>' : '<i class="fas fa-eye"></i>';
     });
   })();
@@ -123,16 +123,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const passOk = validatePassword();
 
     if (!emailOk || !passOk) {
-      // foco al primer campo inválido para accesibilidad
       const firstInvalid = FORM.querySelector('[aria-invalid="true"]');
       if (firstInvalid) firstInvalid.focus();
       return;
     }
 
-    // Mostrar estado de carga en el botón
     const originalHTML = SUBMIT_BTN.innerHTML;
     SUBMIT_BTN.disabled = true;
-    SUBMIT_BTN.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Entrando...';
+    SUBMIT_BTN.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Entering...';
 
     try {
       const res = await fetch('/pages/processLogin.php', {
@@ -153,13 +151,13 @@ document.addEventListener('DOMContentLoaded', () => {
           general.setAttribute('role', 'alert');
           FORM.appendChild(general);
         }
-        general.textContent = data.message || 'Credenciales incorrectas.';
+        general.textContent = data.message || 'Incorrect credentials.';
         SUBMIT_BTN.disabled = false;
         SUBMIT_BTN.innerHTML = originalHTML;
       }
     } catch (err) {
       console.error(err);
-      alert('Error de red. Intenta más tarde.');
+      alert('Network error. Please try again later.');
       SUBMIT_BTN.disabled = false;
       SUBMIT_BTN.innerHTML = originalHTML;
     }
