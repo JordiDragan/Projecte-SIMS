@@ -2,10 +2,10 @@
 document.addEventListener('DOMContentLoaded', () => {
   'use strict';
 
-  const form = document.getElementById('loginForm') || document.querySelector('form');
-  const email = document.getElementById('email');
-  const password = document.getElementById('password');
-  const submitBtn = form.querySelector('button[type="submit"]');
+  const FORM = document.getElementById('loginForm') || document.querySelector('FORM');
+  const EMAIL = document.getElementById('email');
+  const PASSWORD = document.getElementById('password');
+  const SUBMIT_BTN = FORM.querySelector('button[type="submit"]');
 
   // --- Helpers ---
   function ensureErrorEl(input) {
@@ -24,150 +24,144 @@ document.addEventListener('DOMContentLoaded', () => {
     return el;
   }
 
-  // Creación/asegurado de contenedores de error
-  ensureErrorEl(email);
-  ensureErrorEl(password);
+  // Error message containers
+  ensureErrorEl(EMAIL);
+  ensureErrorEl(PASSWORD);
 
-  // Email regex simple y robusta para uso típico
+
+  // Email regex
   function isValidEmail(value) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
   }
   function isValidPassword(value) {
     return /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9]).{8,}/.test(value.trim());
   }
-  // --- Validadores ---
+
+  // Validations
   function validateEmail() {
-    const value = email.value.trim();
-    const err = document.getElementById(`${email.id}-error`);
+    const value = EMAIL.value.trim();
+    const err = document.getElementById(`${EMAIL.id}-error`);
     if (!value) {
-      email.setAttribute('aria-invalid', 'true');
+      EMAIL.setAttribute('aria-invalid', 'true');
       return false;
     }
     if (!isValidEmail(value)) {
-      err.textContent = 'Formato de email no válido.';
-      email.setAttribute('aria-invalid', 'true');
+      err.textContent = 'Invalid email format.';
+      EMAIL.setAttribute('aria-invalid', 'true');
       return false;
     }
     err.textContent = '';
-    email.removeAttribute('aria-invalid');
+    EMAIL.removeAttribute('aria-invalid');
     return true;
   }
 
   function validatePassword() {
-    const value = password.value;
-    const err = document.getElementById(`${password.id}-error`);
+    const value = PASSWORD.value;
+    const err = document.getElementById(`${PASSWORD.id}-error`);
     if (!value) {
-      password.setAttribute('aria-invalid', 'true');
+      PASSWORD.setAttribute('aria-invalid', 'true');
       return false;
     }
     if (value.length < 8) {
-      err.textContent = 'La contraseña debe tener al menos 8 caracteres.';
-      password.setAttribute('aria-invalid', 'true');
+      err.textContent = 'Your password must contain a minimum of 8 characters.';
+      PASSWORD.setAttribute('aria-invalid', 'true');
       return false;
     }
 
     if (!isValidPassword(value)) { 
-      err.textContent = 'La contraseña debe ser compleja';
-      password.setAttribute('aria-invalid', 'true');
+      err.textContent = 'The password must be complex.';
+      PASSWORD.setAttribute('aria-invalid', 'true');
       return false;
     };
     err.textContent = '';
-    password.removeAttribute('aria-invalid');
+    PASSWORD.removeAttribute('aria-invalid');
     return true;
   }
 
-  // Habilita/deshabilita el botón submit y pinta feedback visual
+  // Enable & disable submit button
   function updateSubmitState() {
     const ok = validateEmail() && validatePassword();
-    submitBtn.disabled = !ok;
-    submitBtn.classList.toggle('opacity-50', !ok);
-    submitBtn.classList.toggle('cursor-not-allowed', !ok);
+    SUBMIT_BTN.disabled = !ok;
+    SUBMIT_BTN.classList.toggle('opacity-50', !ok);
+    SUBMIT_BTN.classList.toggle('cursor-not-allowed', !ok);
   }
 
-  // --- Eventos de campo (validación en tiempo real) ---
-  email.addEventListener('input', () => {
+  EMAIL.addEventListener('input', () => {
     validateEmail();
     updateSubmitState();
   });
 
-  password.addEventListener('input', () => {
+  PASSWORD.addEventListener('input', () => {
     validatePassword();
     updateSubmitState();
   });
 
-  // --- Toggle mostrar/ocultar contraseña (se añade dinámicamente) ---
+  // Show & hide password
   (function addPasswordToggle() {
-    const wrapper = password.closest('.relative') || password.parentElement;
+    const wrapper = PASSWORD.closest('.relative') || PASSWORD.parentElement;
     const btn = document.createElement('button');
     btn.type = 'button';
-    btn.setAttribute('aria-label', 'Mostrar contraseña');
+    btn.setAttribute('aria-label', 'Show password');
     btn.className = 'absolute inset-y-0 right-0 pr-3 flex items-center';
     btn.innerHTML = '<i class="fas fa-eye"></i>';
-    // aseguramos posicionamiento: wrapper debe ser relativo (ya lo es en tu HTML)
     wrapper.appendChild(btn);
 
     btn.addEventListener('click', () => {
-      const isPassword = password.type === 'password';
-      password.type = isPassword ? 'text' : 'password';
-      btn.setAttribute('aria-label', isPassword ? 'Ocultar contraseña' : 'Mostrar contraseña');
+      const isPassword = PASSWORD.type === 'password';
+      PASSWORD.type = isPassword ? 'text' : 'password';
+      btn.setAttribute('aria-label', isPassword ? 'Hide password' : 'Show password');
       btn.innerHTML = isPassword ? '<i class="fas fa-eye-slash"></i>' : '<i class="fas fa-eye"></i>';
     });
   })();
 
+
   // --- Submit handler ---
-  form.addEventListener('submit', async (e) => {
+  FORM.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const emailOk = validateEmail();
     const passOk = validatePassword();
 
     if (!emailOk || !passOk) {
-      // foco al primer campo inválido para accesibilidad
-      const firstInvalid = form.querySelector('[aria-invalid="true"]');
+      const firstInvalid = FORM.querySelector('[aria-invalid="true"]');
       if (firstInvalid) firstInvalid.focus();
       return;
     }
 
-    // Mostrar estado de carga en el botón
-    const originalHTML = submitBtn.innerHTML;
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Entrando...';
+    const originalHTML = SUBMIT_BTN.innerHTML;
+    SUBMIT_BTN.disabled = true;
+    SUBMIT_BTN.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Entering...';
 
     try {
-      // Ejemplo de envío: sustituye la URL por tu endpoint real
-      const res = await fetch('/api/login', {
+      const res = await fetch('/pages/processLogin.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email.value.trim(), password: password.value })
+        body: JSON.stringify({ email: EMAIL.value.trim(), password: PASSWORD.value })
       });
 
-      if (!res.ok) {
-        // Mostrar error general (crea un contenedor si hace falta)
+      const data = await res.json();
+      if (data.success) {
+        window.location.href = '/';
+      } else {
         let general = document.getElementById('login-general-error');
         if (!general) {
           general = document.createElement('p');
           general.id = 'login-general-error';
           general.className = 'text-red-600 text-sm mt-4';
           general.setAttribute('role', 'alert');
-          form.appendChild(general);
+          FORM.appendChild(general);
         }
-        const data = await res.json().catch(() => ({}));
-        general.textContent = data.message || 'Credenciales incorrectas.';
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalHTML;
-        return;
+        general.textContent = data.message || 'Incorrect credentials.';
+        SUBMIT_BTN.disabled = false;
+        SUBMIT_BTN.innerHTML = originalHTML;
       }
-
-      // Si todo ok, redirigir o manejar sesión
-      window.location.href = '/dashboard'; // cambia según tu app
     } catch (err) {
       console.error(err);
-      alert('Error de red. Intenta más tarde.');
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = originalHTML;
+      alert('Network error. Please try again later.');
+      SUBMIT_BTN.disabled = false;
+      SUBMIT_BTN.innerHTML = originalHTML;
     }
   });
 
-  // Inicializamos el estado del botón
   updateSubmitState();
 });

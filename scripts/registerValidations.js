@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
   'use strict';
 
-  const form = document.getElementById('registerForm') || document.querySelector('form');
-  const name = document.getElementById('name');
-  const email = document.getElementById('email');
-  const password = document.getElementById('password');
-  const submitBtn = form.querySelector('button[type="submit"]');
+  const FORM = document.getElementById('registerForm') || document.querySelector('FORM');
+  const NAME = document.getElementById('name');
+  const EMAIL = document.getElementById('email');
+  const PASSWORD = document.getElementById('password');
+  const SUBMIT_BTN = FORM.querySelector('button[type="submit"]');
 
 
   function ensureErrorEl(input) {
@@ -27,11 +27,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // Error message containers
-  ensureErrorEl(name);
-  ensureErrorEl(email);
-  ensureErrorEl(password);
+  ensureErrorEl(NAME);
+  ensureErrorEl(EMAIL);
+  ensureErrorEl(PASSWORD);
 
 
+  // Functions
   function isValidName(value) {
     return /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/.test(value.trim());
   }
@@ -45,61 +46,61 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   function validateName() {
-  const value = name.value.trim()
-  const err = document.getElementById(`${name.id}-error`);
+  const value = NAME.value.trim()
+  const err = document.getElementById(`${NAME.id}-error`);
   if (!value) {
-    name.setAttribute('aria-invalid', 'true');
+    NAME.setAttribute('aria-invalid', 'true');
     return false;
   }
   if (!isValidName(value)) {
     err.textContent = 'Invalid name format. Use letters and spaces only.';
-    name.setAttribute('aria-invalid', 'true');
+    NAME.setAttribute('aria-invalid', 'true');
     return false;
   }
   err.textContent = '';
-  name.removeAttribute('aria-invalid');
+  NAME.removeAttribute('aria-invalid');
   return true;
   }
 
 
   function validateEmail() {
-    const value = email.value.trim();
-    const err = document.getElementById(`${email.id}-error`);
+    const value = EMAIL.value.trim();
+    const err = document.getElementById(`${EMAIL.id}-error`);
     if (!value) {
-      email.setAttribute('aria-invalid', 'true');
+      EMAIL.setAttribute('aria-invalid', 'true');
       return false;
     }
     if (!isValidEmail(value)) {
       err.textContent = 'Invalid email format.';
-      email.setAttribute('aria-invalid', 'true');
+      EMAIL.setAttribute('aria-invalid', 'true');
       return false;
     }
     err.textContent = '';
-    email.removeAttribute('aria-invalid');
+    EMAIL.removeAttribute('aria-invalid');
     return true;
   }
 
 
   function validatePassword() {
-    const value = password.value;
-    const err = document.getElementById(`${password.id}-error`);
+    const value = PASSWORD.value;
+    const err = document.getElementById(`${PASSWORD.id}-error`);
     if (!value) {
-      password.setAttribute('aria-invalid', 'true');
+      PASSWORD.setAttribute('aria-invalid', 'true');
       return false;
     }
     if (value.length < 8) {
       err.textContent = 'Your password must contain a minimum of 8 characters.';
-      password.setAttribute('aria-invalid', 'true');
+      PASSWORD.setAttribute('aria-invalid', 'true');
       return false;
     }
 
     if (!isValidPassword(value)) { 
       err.textContent = 'Please choose a strong password with uppercase, lowercase, digits, and special characters.';
-      password.setAttribute('aria-invalid', 'true');
+      PASSWORD.setAttribute('aria-invalid', 'true');
       return false;
     };
     err.textContent = '';
-    password.removeAttribute('aria-invalid');
+    PASSWORD.removeAttribute('aria-invalid');
     return true;
   }
 
@@ -107,22 +108,22 @@ document.addEventListener('DOMContentLoaded', () => {
   // Enable & disable submit button
   function updateSubmitState() {
     const ok = validateName() && validateEmail() && validatePassword();
-    submitBtn.disabled = !ok;
-    submitBtn.classList.toggle('opacity-50', !ok);
-    submitBtn.classList.toggle('cursor-not-allowed', !ok);
+    SUBMIT_BTN.disabled = !ok;
+    SUBMIT_BTN.classList.toggle('opacity-50', !ok);
+    SUBMIT_BTN.classList.toggle('cursor-not-allowed', !ok);
   }
 
-  name.addEventListener('input', () => {
+  NAME.addEventListener('input', () => {
     validateName();
     updateSubmitState();
   });
 
-  email.addEventListener('input', () => {
+  EMAIL.addEventListener('input', () => {
     validateEmail();
     updateSubmitState();
   });
 
-  password.addEventListener('input', () => {
+  PASSWORD.addEventListener('input', () => {
     validatePassword();
     updateSubmitState();
   });
@@ -130,25 +131,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Show & hide password
   (function addPasswordToggle() {
-    const wrapper = password.closest('.relative') || password.parentElement;
+    const wrapper = PASSWORD.closest('.relative') || PASSWORD.parentElement;
     const btn = document.createElement('button');
     btn.type = 'button';
-    btn.setAttribute('aria-label', 'Mostrar contraseña');
+    btn.setAttribute('aria-label', 'Show password');
     btn.className = 'absolute inset-y-0 right-0 pr-3 flex items-center';
     btn.innerHTML = '<i class="fas fa-eye"></i>';
     wrapper.appendChild(btn);
 
     btn.addEventListener('click', () => {
-      const isPassword = password.type === 'password';
-      password.type = isPassword ? 'text' : 'password';
-      btn.setAttribute('aria-label', isPassword ? 'Hide contraseña' : 'Show contraseña');
+      const isPassword = PASSWORD.type === 'password';
+      PASSWORD.type = isPassword ? 'text' : 'password';
+      btn.setAttribute('aria-label', isPassword ? 'Hide password' : 'Show password');
       btn.innerHTML = isPassword ? '<i class="fas fa-eye-slash"></i>' : '<i class="fas fa-eye"></i>';
     });
   })();
 
 
 // --- Submit handler ---
-form.addEventListener('submit', (e) => {
+FORM.addEventListener('submit', (e) => {
   e.preventDefault();
 
   const nameOK = validateName();
@@ -161,26 +162,32 @@ form.addEventListener('submit', (e) => {
     return;
   }
 
-  // Save data in Local Storage
+  // Send data to processRegister.php
   const userData = {
-    name: name.value.trim(),
-    email: email.value.trim(),
-    password: password.value
+    name: NAME.value.trim(),
+    email: EMAIL.value.trim(),
+    password: PASSWORD.value,
   };
 
-  localStorage.setItem('registeredUser', JSON.stringify(userData));
+  fetch('/pages/processRegister.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json'},
+    body: JSON.stringify(userData)
+  })
 
-  const originalHTML = submitBtn.innerHTML;
-  submitBtn.disabled = true;
-  submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Creating account...';
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
+      FORM.reset();
+      window.location.href = '/login.html';
+    } else {
+      alert(data.message || 'Error to connect with Database');
+    }
+  })
+  .catch(() => {
+    alert('Network error. Try again.');
+  });
 
-  setTimeout(() => {
-    form.reset();
-    submitBtn.disabled = false;
-    submitBtn.innerHTML = originalHTML;
-  }, 1000);
+  updateSubmitState();
 });
-
-updateSubmitState();
-
-});
+})
