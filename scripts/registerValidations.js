@@ -46,20 +46,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   function validateName() {
-  const value = NAME.value.trim()
-  const err = document.getElementById(`${NAME.id}-error`);
-  if (!value) {
-    NAME.setAttribute('aria-invalid', 'true');
-    return false;
-  }
-  if (!isValidName(value)) {
-    err.textContent = 'Invalid name format. Use letters and spaces only.';
-    NAME.setAttribute('aria-invalid', 'true');
-    return false;
-  }
-  err.textContent = '';
-  NAME.removeAttribute('aria-invalid');
-  return true;
+    const value = NAME.value.trim()
+    const err = document.getElementById(`${NAME.id}-error`);
+    if (!value) {
+      NAME.setAttribute('aria-invalid', 'true');
+      return false;
+    }
+    if (!isValidName(value)) {
+      err.textContent = 'Invalid name format. Use letters and spaces only.';
+      NAME.setAttribute('aria-invalid', 'true');
+      return false;
+    }
+    err.textContent = '';
+    NAME.removeAttribute('aria-invalid');
+    return true;
   }
 
 
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return false;
     }
 
-    if (!isValidPassword(value)) { 
+    if (!isValidPassword(value)) {
       err.textContent = 'Please choose a strong password with uppercase, lowercase, digits, and special characters.';
       PASSWORD.setAttribute('aria-invalid', 'true');
       return false;
@@ -148,46 +148,46 @@ document.addEventListener('DOMContentLoaded', () => {
   })();
 
 
-// --- Submit handler ---
-FORM.addEventListener('submit', (e) => {
-  e.preventDefault();
+  // --- Submit handler ---
+  FORM.addEventListener('submit', (e) => {
+    e.preventDefault();
 
-  const nameOK = validateName();
-  const emailOk = validateEmail();
-  const passOk = validatePassword();
+    const nameOK = validateName();
+    const emailOk = validateEmail();
+    const passOk = validatePassword();
 
-  if (!nameOK || !emailOk || !passOk) {
-    const firstInvalid = form.querySelector('[aria-invalid="true"]');
-    if (firstInvalid) firstInvalid.focus();
-    return;
-  }
-
-  // Send data to processRegister.php
-  const userData = {
-    name: NAME.value.trim(),
-    email: EMAIL.value.trim(),
-    password: PASSWORD.value,
-  };
-
-  fetch('/pages/processRegister.php', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json'},
-    body: JSON.stringify(userData)
-  })
-
-  .then(res => res.json())
-  .then(data => {
-    if (data.success) {
-      FORM.reset();
-      window.location.href = '/login.html';
-    } else {
-      alert(data.message || 'Error to connect with Database');
+    if (!nameOK || !emailOk || !passOk) {
+      const firstInvalid = form.querySelector('[aria-invalid="true"]');
+      if (firstInvalid) firstInvalid.focus();
+      return;
     }
-  })
-  .catch(() => {
-    alert('Network error. Try again.');
-  });
 
-  updateSubmitState();
-});
+    // Send data to processRegister.php
+    const userData = {
+      name: NAME.value.trim(),
+      email: EMAIL.value.trim(),
+      password: PASSWORD.value,
+    };
+
+    fetch('/pages/processRegister.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(userData)
+    })
+
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          FORM.reset();
+          window.location.href = '/login.html';
+        } else {
+          alert(data.message || 'Error to connect with Database');
+        }
+      })
+      .catch(() => {
+        alert('Network error. Try again.');
+      });
+
+    updateSubmitState();
+  });
 })
