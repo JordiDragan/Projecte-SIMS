@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
     SUBMIT_BTN.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Entering...';
 
     try {
-  const res = await fetch('/scripts/processLogin.php', {
+  const res = await fetch('../scripts/processLogin.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: EMAIL.value.trim(), password: PASSWORD.value })
@@ -141,7 +141,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const data = await res.json();
       if (data.success) {
-        window.location.href = '/';
+        // On successful login, send the user to the main app page
+        window.location.href = '/pages/main.html';
       } else {
         let general = document.getElementById('login-general-error');
         if (!general) {
