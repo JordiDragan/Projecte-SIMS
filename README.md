@@ -1,13 +1,36 @@
 # Blink
 
-## Usage
+## How to use
 
-1. Copy `apikey.js.example` to `Apikey.js`.
-2. Open `apikey.js` and replace the `GOOGLE_MAPS_API_KEY` constant with your key:
+Run the full stack (PHP + Apache, PostgreSQL, and pgAdmin) with Docker. Configure your environment, start the services, and open the app in your browser.
 
-   ```js
-   const GOOGLE_MAPS_API_KEY = 'YOUR_API_KEY_HERE'
-   ```
+### Prerequisites
+- Docker and Docker Compose installed
+
+### 1) Configure environment
+Create your environment file from the example and fill in values:
+
+```bash
+cp .env.example .env
+```
+
+Update `.env` with:
+- PostgreSQL: `POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_DB`
+- pgAdmin: `PGADMIN_DEFAULT_EMAIL`, `PGADMIN_DEFAULT_PASSWORD`
+- Google Maps: `GOOGLE_MAPS_API_KEY` (enable the Maps JavaScript API in Google Cloud)
+
+### 2) Start the stack
+From the project root:
+
+```bash
+docker compose up -d --build
+```
+
+This will:
+- Build and start the web app at `http://localhost:8080`
+- Start PostgreSQL on port `5432` with a persistent volume
+- Start pgAdmin at `http://localhost:5053`
+
 
 ## For developers
 
