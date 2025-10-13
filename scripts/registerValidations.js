@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
       password: PASSWORD.value,
     };
 
-    fetch('/pages/processRegister.php', {
+    fetch('/processRegister.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(userData)
