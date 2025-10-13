@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
   }
   function isValidPassword(value) {
-    return /^(?:[A-Za-z]{8,}|\d{8,})$/.test(value.trim());
+    return /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9]).{8,}/.test(value.trim());
   }
 
 
