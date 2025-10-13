@@ -9,11 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="styles/theme.css">
-    <link rel="stylesheet" href="styles/base.css">
-    <link rel="stylesheet" href="styles/map.css">
-    <link rel="stylesheet" href="styles/bottom.css">
-    <link rel="stylesheet" href="styles/side.css">
+    <link rel="stylesheet" href="/styles/theme.css">
+    <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" href="/styles/map.css">
+    <link rel="stylesheet" href="/styles/bottom.css">
+    <link rel="stylesheet" href="/styles/side.css">
 
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -29,7 +29,7 @@
         </button> 
 
         <div id="sideBarIcon" >
-            <img src="assets/logos/logoNoBg.png" alt="App logo">
+            <img src="/assets/logos/logoNoBg.png" alt="App logo">
         </div>
         <div id="userNameSurname">
             Oriol Fibla Sancho
@@ -82,7 +82,7 @@
                 </svg>
             </button>
 
-            <a href="/login.html">
+            <a href="/pages/login.html">
                 <button id="sideBarLogOffButton" class="sideBarUtilityButton">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-8">
                         <path fill-rule="evenodd" d="M7.5 3.75A1.5 1.5 0 0 0 6 5.25v13.5a1.5 1.5 0 0 0 1.5 1.5h6a1.5 1.5 0 0 0 1.5-1.5V15a.75.75 0 0 1 1.5 0v3.75a3 3 0 0 1-3 3h-6a3 3 0 0 1-3-3V5.25a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3V9A.75.75 0 0 1 15 9V5.25a1.5 1.5 0 0 0-1.5-1.5h-6Zm5.03 4.72a.75.75 0 0 1 0 1.06l-1.72 1.72h10.94a.75.75 0 0 1 0 1.5H10.81l1.72 1.72a.75.75 0 1 1-1.06 1.06l-3-3a.75.75 0 0 1 0-1.06l3-3a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd" />
@@ -126,7 +126,7 @@
                 Reserve
             </button>
         </div>
-        <a href="pages/scan.html">
+    <a href="/pages/scan.html">
         <button id="scanBtn" class="scan-btn" aria-label="Scan QR">
             <span class="scan-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -141,10 +141,9 @@
         </button>
         </a>
     </div>
-    <script src="Apikey.js"></script>
-    <script src="scripts/reserve.js"></script>
-    <script src="scripts/sideBar.js"></script>
-    <script type="module" src="scripts/init.js"></script>
+    <script src="/scripts/reserve.js"></script>
+    <script src="/scripts/sideBar.js"></script>
+    <script type="module" src="/scripts/init.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY_HERE&callback=initMap&v=weekly" async defer>
     </script>
     <script>

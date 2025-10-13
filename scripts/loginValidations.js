@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
     SUBMIT_BTN.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Entering...';
 
     try {
-      const res = await fetch('/processLogin.php', {
+  const res = await fetch('/scripts/processLogin.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: EMAIL.value.trim(), password: PASSWORD.value })

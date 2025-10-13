@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
       password: PASSWORD.value,
     };
 
-    fetch('/processRegister.php', {
+  fetch('/scripts/processRegister.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(userData)
@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
       .then(data => {
         if (data.success) {
           FORM.reset();
-          window.location.href = '/login.html';
+          window.location.href = '/pages/login.html';
         } else {
           alert(data.message || 'Error to connect with Database');
         }
