@@ -62,17 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
       PASSWORD.setAttribute('aria-invalid', 'true');
       return false;
     }
-    if (value.length < 8) {
-      err.textContent = 'Your password must contain a minimum of 8 characters.';
-      PASSWORD.setAttribute('aria-invalid', 'true');
-      return false;
-    }
-
-    if (!isValidPassword(value)) { 
-      err.textContent = 'The password must be complex.';
-      PASSWORD.setAttribute('aria-invalid', 'true');
-      return false;
-    };
     err.textContent = '';
     PASSWORD.removeAttribute('aria-invalid');
     return true;
