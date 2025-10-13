@@ -130,8 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const data = await res.json();
       if (data.success) {
-        // On successful login, send the user to the main app page
-        window.location.href = '/pages/main.html';
+        window.location.href = '/pages/main.php';
       } else {
         let general = document.getElementById('login-general-error');
         if (!general) {
