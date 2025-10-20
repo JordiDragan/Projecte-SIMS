@@ -113,7 +113,8 @@ export function bottomBarToggle(map) {
   // Collapse when clicking outside the BOTTOM bar
   document.addEventListener('click', (e) => {
     const target = e.target;
-    if (!BOTTOM.contains(target) && !target.closest('.gm-style')) {
+      // If the clicked element or any of its ancestors has the marker class, don't collapse
+      if (!target.closest('.not-collapse-bottom') && !BOTTOM.contains(target) && !target.closest('.gm-style')) {
       BOTTOM.classList.add('sliding-down')
 
       setTimeout(() => {
