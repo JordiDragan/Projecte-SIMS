@@ -1,4 +1,8 @@
 const RESERVE_BTN = document.getElementById("reserve_button")
+const RESERVE_MODAL = document.getElementById("reserve_modal")
+const OVERLAY = document.getElementById("overlay")
+const CLOSE_BTN = document.getElementById("close_reserve_modal")
+const CONFIRM_BTN = document.getElementById("confirm_reserve_modal")
 
 // Save the original button text so it can be restored when finished
 const ORIGINAL_TEXT = RESERVE_BTN ? RESERVE_BTN.innerText : "Reserve"
@@ -48,5 +52,26 @@ function startFiveMinuteTimer() {
 
 
 RESERVE_BTN.addEventListener('click', () => {
+    RESERVE_MODAL.classList.remove('hidden')
+    OVERLAY.classList.remove('hidden')
+    RESERVE_MODAL.classList.add('flex')
+    OVERLAY.classList.add('flex')
+})
+
+CLOSE_BTN.addEventListener('click', () => {
+    RESERVE_MODAL.classList.add('hidden')
+    OVERLAY.classList.add('hidden')
+})
+
+CONFIRM_BTN.addEventListener('click', () => {
     startFiveMinuteTimer()
+    RESERVE_MODAL.classList.add('hidden')
+    OVERLAY.classList.add('hidden')
+})
+
+OVERLAY.addEventListener('click', (e) => {
+    if (e.target === OVERLAY) {
+        RESERVE_MODAL.classList.add('hidden')
+        OVERLAY.classList.add('hidden')
+    }
 })

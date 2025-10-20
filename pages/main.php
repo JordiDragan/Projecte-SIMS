@@ -121,8 +121,8 @@
                 0340 GDH
             </p>
 
-            <div id="car_battery" class="bg-[#0D6344] flex flex-row gap-3 text-white py-3 px-3 rounded">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="size-8">
+            <div id="car_battery">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" class="size-8">
                     <path d="M4.5 9.75a.75.75 0 0 0-.75.75V15c0 .414.336.75.75.75h6.75A.75.75 0 0 0 12 15v-4.5a.75.75 0 0 0-.75-.75H4.5Z" />
                     <path fill-rule="evenodd" d="M3.75 6.75a3 3 0 0 0-3 3v6a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3v-.037c.856-.174 1.5-.93 1.5-1.838v-2.25c0-.907-.644-1.664-1.5-1.837V9.75a3 3 0 0 0-3-3h-15Zm15 1.5a1.5 1.5 0 0 1 1.5 1.5v6a1.5 1.5 0 0 1-1.5 1.5h-15a1.5 1.5 0 0 1-1.5-1.5v-6a1.5 1.5 0 0 1 1.5-1.5h15Z" clip-rule="evenodd" />
                 </svg>
@@ -148,6 +148,20 @@
         </button>
         </a>
     </div>
+    <div id="overlay" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
+        <div id="reserve_modal" class=" not-collapse-bottom bg-white rounded-lg shadow-lg h-auto w-2/3 justify-center items-center">
+            <div id="reserve_modal_content" class=" w-full h-full py-6 px-4">
+                <h2 class="text-2xl font-bold mb-1 text-center">Are you sure?</h2>
+                <p class="text-base text-gray-600 mb-4 text-center">Reserve this vehicle</p>
+                <div class="flex flex-col gap-3">
+                    <button class="w-full bg-white border-2 border-gray-200 text-gray-800 rounded-full px-4 py-3 text-base font-medium text-xl" id="close_reserve_modal">Cancel</button>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white rounded-full px-4 py-3 text-base font-semibold text-xl" id="confirm_reserve_modal">Reserve</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
     <!-- API key is injected via PHP env (GOOGLE_MAPS_API_KEY); Apikey.js not needed here -->
     <script src="../scripts/reserve.js"></script>
     <script src="../scripts/sideBar.js"></script>
