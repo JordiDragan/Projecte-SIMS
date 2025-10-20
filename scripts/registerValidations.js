@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const passOk = validatePassword();
 
     if (!nameOK || !emailOk || !passOk) {
-      const firstInvalid = form.querySelector('[aria-invalid="true"]');
+      const firstInvalid = FORM.querySelector('[aria-invalid="true"]');
       if (firstInvalid) firstInvalid.focus();
       return;
     }
