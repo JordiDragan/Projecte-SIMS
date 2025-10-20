@@ -31,12 +31,12 @@ TYPE_ID_BTN.addEventListener('click', () => {
 	const container = document.getElementById('camera');
 	if (!container) return;
 
-	// Elementos UI
+	// UI elements
 	const video = document.createElement('video');
-	video.setAttribute('playsinline', ''); // importante para iOS
+	video.setAttribute('playsinline', ''); // important for iOS
 	video.autoplay = true;
 	video.muted = true; // evitar autoplay bloqueos en algunos navegadores
-	// Hacer que el video llene el contenedor de cámara
+	// Make the video fill the camera container
 	video.style.width = '100%';
 	video.style.height = '100%';
 	video.style.objectFit = 'cover';
@@ -50,7 +50,7 @@ TYPE_ID_BTN.addEventListener('click', () => {
 			return;
 		}
 
-		// Stop previous stream first
+	// Stop previous stream first
 		if (currentStream) stopCamera();
 
 		// Build base constraints: prefer rear camera on mobile
@@ -74,51 +74,51 @@ TYPE_ID_BTN.addEventListener('click', () => {
 		video.srcObject = null;
 	}
 
-	// Iniciar la cámara pidiendo una resolución ideal basada en el tamaño del contenedor
+	// Start the camera requesting an ideal resolution based on the container size
 	function startCameraForContainer() {
 		const rect = container.getBoundingClientRect();
 		const DPR = window.devicePixelRatio || 1;
 		const desiredWidth = Math.max(1, Math.round(rect.width * DPR));
 		const desiredHeight = Math.max(1, Math.round(rect.height * DPR));
 
-		// Pedimos la resolución como ideal (no forzada) para que el navegador elija la mejor disponible
+	// Request the resolution as ideal (not forced) so the browser can pick the best available
 		startCamera({ video: { width: { ideal: desiredWidth }, height: { ideal: desiredHeight } } });
 	}
 
-	// Inicia la cámara la primera vez
+	// Start the camera for the first time
 	startCameraForContainer();
 
-	// Reajustar si el tamaño del contenedor cambia (debounce de 250ms)
+	// Readjust if the container size changes (250ms debounce)
 	let resizeTimer = null;
 	if (window.ResizeObserver) {
 		const ro = new ResizeObserver(() => {
 			clearTimeout(resizeTimer);
 			resizeTimer = setTimeout(() => {
-				// sólo reiniciar si la pestaña está visible
+				// only restart if the tab is visible
 				if (!document.hidden) startCameraForContainer();
 			}, 250);
 		});
 		ro.observe(container);
 	} else {
-		// Fallback: escuchar resize de ventana
+	// Fallback: listen to window resize
 		window.addEventListener('resize', () => {
 			clearTimeout(resizeTimer);
 			resizeTimer = setTimeout(() => { if (!document.hidden) startCameraForContainer(); }, 250);
 		});
 	}
 
-	// También reajustar tras un cambio de orientación
+	// Also readjust after an orientation change
 	window.addEventListener('orientationchange', () => { setTimeout(startCameraForContainer, 300); });
 
-	// Parar la cámara al cerrar o navegar fuera de la página
+	// Stop the camera when closing or navigating away from the page
 	window.addEventListener('beforeunload', stopCamera);
 
-	// Parar/reanudar según visibilidad (opcional): libera la cámara si la pestaña está oculta
+	// Pause/resume based on visibility (optional): release the camera when the tab is hidden
 	document.addEventListener('visibilitychange', () => {
 		if (document.hidden) {
 			stopCamera();
 		} else {
-			// reintentar iniciar cuando la pestaña vuelva con resolución basada en el contenedor
+			// retry starting when the tab returns with resolution based on the container
 			if (!currentStream) startCameraForContainer();
 		}
 	});

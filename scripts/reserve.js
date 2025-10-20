@@ -1,6 +1,6 @@
 const RESERVE_BTN = document.getElementById("reserve_button")
 
-// Guardamos el texto original del botón para restaurarlo al finalizar
+// Save the original button text so it can be restored when finished
 const ORIGINAL_TEXT = RESERVE_BTN ? RESERVE_BTN.innerText : "Reserve"
 
 // Estado del timer
