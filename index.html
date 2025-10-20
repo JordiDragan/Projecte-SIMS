@@ -12,7 +12,7 @@
     <script src="styles/tailwindStyle.js"></script>
     <style>
         .gradient-bg {
-            background: linear-gradient(135deg, #CAF0D8 0%, #0D6344 100%);
+            background: linear-gradient(135deg, #8dd0a6 0%, #0D6344 100%);
         }
         .section-padding {
             padding-top: 5rem;
@@ -28,7 +28,7 @@
 
                 <div class="flex items-center">
                     <img src="assets/logos/logoPC.png" alt="Blink Logo" class="hidden md:block max-w-xs">
-                    <img src="assets/logos/logoMobile.png" alt="Blink Mobile Logo" class="md:hidden max-w-[150px]">
+                    <img src="assets/logos/logo.png" alt="Blink Mobile Logo" class="md:hidden max-w-[150px]" width="70%" height="70%">
                 </div>
 
 
@@ -41,8 +41,8 @@
 
 
                 <div class="flex space-x-4">
-                    <a href="/pages/login.html" class="text-primary border border-primary px-4 py-2 rounded-lg font-medium hover:bg-primary hover:text-white transition-colors">Log in</a>
-                    <a href="/pages/register.html" class="bg-primary text-white px-4 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors">Sign up</a>
+                    <a href="/pages/login.html" class="text-accent border border-accent px-4 py-2 rounded-lg font-medium hover:bg-accent hover:text-white transition-colors">Log in</a>
+                    <a href="/pages/register.html" class="bg-accent text-white px-4 py-2 rounded-lg font-medium hover:bg-accent/90 transition-colors">Sign up</a>
                 </div>
             </div>
         </div>
@@ -51,8 +51,8 @@
     <!-- Hero Section -->
     <section class="gradient-bg text-white">
         <div class="container mx-auto px-4 py-20 md:py-28 text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-6">Smart Fleet Management with Geofencing and Balance Control</h1>
-            <p class="text-xl mb-10 opacity-90">Blink allows you to monitor, optimize, and control your vehicles in real time, with integrated user balance management.</p>
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Blink</h1>
+            <p class="text-xl mb-10 opacity-90">Smart Fleet Management with Geofencing and Balance Control</p>
             <a href="#" class="inline-block bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg">Get Started</a>
         </div>
     </section>
@@ -71,9 +71,12 @@
                 <p class="text-gray-600 mb-8">With Blink, you gain transparency, control, and security in every operation of your fleet.</p>
                 <a href="#" class="inline-block bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors">Learn More</a>
             </div>
-            <div class="md:w-1/2 bg-gray-200 h-80 rounded-xl flex items-center justify-center">
-                <p class="text-gray-500">[Interactive map or fleet dashboard]</p>
-            </div>
+        <div class="md:w-1/2 w-full bg-gray-200 rounded-xl flex items-center justify-center overflow-hidden">
+            <img src="assets/adminPanel.png" 
+                alt="Blink Logo" 
+                class="w-full h-full max-h-80 md:max-h-full object-contain md:object-cover rounded-xl">
+        </div>
+
         </div>
     </section>
 
@@ -85,20 +88,20 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow mr-2 ml-2">
-                <div class="text-primary text-4xl mb-6"><i class="fas fa-map-marked-alt"></i></div>
-                <h3 class="text-xl font-bold text-secondary mb-4">Smart Geofencing</h3>
-                <p class="text-gray-600">Define safe areas, receive automatic alerts, and prevent unauthorized movements of your vehicles.</p>
+            <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow mr-4 ml-4">
+                <div class="text-accent text-4xl mb-6"><i class="fas fa-map-marked-alt"></i></div>
+                <h3 class="text-xl font-bold text-secondary mb-4">AI asisted</h3>
+                <p class="text-gray-600">Suported by the most advanced AI technologies</p>
             </div>
 
-            <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow mr-2 ml-2">
-                <div class="text-primary text-4xl mb-6"><i class="fas fa-wallet"></i></div>
+            <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow mr-4 ml-4">
+                <div class="text-accent text-4xl mb-6"><i class="fas fa-wallet"></i></div>
                 <h3 class="text-xl font-bold text-secondary mb-4">Balance Management</h3>
                 <p class="text-gray-600">Manage the individual balance of each user or vehicle, with expense control and automatic recharges.</p>
             </div>
 
-            <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow mr-2 ml-2">
-                <div class="text-primary text-4xl mb-6"><i class="fas fa-tachometer-alt"></i></div>
+            <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow mr-4 ml-4">
+                <div class="text-accent text-4xl mb-6"><i class="fas fa-tachometer-alt"></i></div>
                 <h3 class="text-xl font-bold text-secondary mb-4">Real-Time Monitoring</h3>
                 <p class="text-gray-600">Access live information about position, speed, routes, and critical events of your fleet.</p>
             </div>
@@ -108,21 +111,21 @@
     <!-- Payment Options -->
     <section class="section-padding bg-white">
         <div class="container mx-auto px-4 text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-secondary mb-4">Final user payment mathods</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-secondary mb-4">Final user payment methods</h2>
             <p class="text-gray-600 max-w-2xl mx-auto">Choose the option that best fits the size and needs of your fleet.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="border-t-4 border-primary bg-white p-8 rounded-xl shadow-md mr-2 ml-2">
+            <div class="border-t-4 border-primary bg-white p-8 rounded-xl shadow-md mr-4 ml-4">
                 <h3 class="text-xl font-bold text-secondary mb-4">Pay for a single ride</h3>
                 <p class="text-gray-600 mb-6">For ocasional users</p>
-                <a href="#" class="inline-block bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors">Select</a>
+                <a href="#" class="inline-block bg-accent text-white px-6 py-3 rounded-lg font-medium hover:bg-accent/90 transition-colors">Select</a>
             </div>
 
-            <div class="border-t-4 border-primary bg-white p-8 rounded-xl shadow-md mr-2 ml-2">
+            <div class="border-t-4 border-primary bg-white p-8 rounded-xl shadow-md mr-4 ml-4">
                 <h3 class="text-xl font-bold text-secondary mb-4">Add credit</h3>
                 <p class="text-gray-600 mb-6">For our most frequent users</p>
-                <a href="#" class="inline-block bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors">Select</a>
+                <a href="#" class="inline-block bg-accent text-white px-6 py-3 rounded-lg font-medium hover:bg-accent/90 transition-colors">Select</a>
             </div>
 
         </div>
@@ -145,7 +148,7 @@
                     <div class="flex items-center mb-4">
                         <span class="text-xl font-bold">Blink</span>
                     </div>
-                    <p class="text-primary-light mb-6">Comprehensive fleet tracking platform with balance management and advanced geofencing.</p>
+                    <p class="text-primary-light mb-6">Comprehensive fleet tracking platform with balance Management.</p>
                     <div class="flex space-x-4">
                         <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
                             <i class="fab fa-facebook-f"></i>
