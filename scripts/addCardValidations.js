@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const name = document.getElementById('name');
   const submitBtn = form.querySelector('button[type="submit"]');
 
-  // --- Función para crear contenedor de error ---
+  // --- Function to create error container ---
   function ensureErrorEl(input) {
     const wrapper = input.closest('.relative') || input.parentElement;
     const id = `${input.id}-error`;
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
   ensureErrorEl(cvv);
   ensureErrorEl(name);
 
-  // --- Validaciones ---
+  // --- Validations ---
   function isValidCardNumber(value) {
     return /^\d{16}$/.test(value.replace(/\s/g, ''));
   }
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/.test(value.trim());
   }
 
-  // --- Validadores individuales ---
+  // --- Individual validators ---
   function validateCardNumber() {
     const value = cardNumber.value.replace(/\s/g, '');
     const err = document.getElementById('cardNumber-error');
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return true;
   }
 
-  // --- Formatear número de tarjeta en grupos de 4 ---
+  // --- Format card number into groups of 4 ---
   cardNumber.addEventListener('input', () => {
     let value = cardNumber.value.replace(/\D/g, '');
     value = value.substring(0, 16);
