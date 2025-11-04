@@ -16,14 +16,14 @@
     height: 100vh;
     width: 75%;
 
-    border-right: 1px solid var(--color-forest);
+    border-right: 1px solid var(--color-primary);
 
-    background-color: var(--color-mint);
+    background-color: var(--color-muted);
     transform: translateX(-105%);
     opacity: 0;
     transition: transform 320ms cubic-bezier(.2,.9,.2,1), opacity 220ms ease, box-shadow 320ms ease;
     z-index: 45;
-    box-shadow: 0 4px 12px var(--color-forest);
+    box-shadow: 0 4px 12px var(--color-primary);
 }
 
 #sideBar.open-slide{
@@ -54,7 +54,7 @@
 }
 
 #userBalance b {
-    color: var(--color-purple);
+    color: var(--color-accent-2);
 }
 
 #userStats{
@@ -90,7 +90,7 @@
 
 .sideBarPurchasesButton {
     display: flex;
-    background-color: var(--color-purple);
+    background-color: var(--color-accent-2);
 
     justify-content: center;
     align-items: center;

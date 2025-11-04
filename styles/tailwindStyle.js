@@ -2,10 +2,10 @@ tailwind.config = {
     theme: {
         extend: {
             colors: {
-                'primary': '#0D6344',
-                'primary-light': '#CAF0D8',
-                'accent': '#7E3FBC',
-                'accent-light': '#CB97FF'
+                'primary': '#FF6FAF',
+                'primary-light': '#FFD7EC',
+                'accent': '#FF99CB',
+                'accent-light': '#FF4D8A'
             },
             fontFamily: {
                 'montserrat': ['Montserrat', 'sans-serif']

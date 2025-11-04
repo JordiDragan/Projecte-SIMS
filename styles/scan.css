@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
 
 :root {
-  --color-forest: #0D6344;
-  --color-mint: #ddfae8;
-  --color-lilac: #CB97FF;
-  --color-purple: #7E3FBC;
+  --color-forest: #0D6344; /* ...existing code... - remove old references */
+  /* Replaced by the theme variables, keep fallback for safety */
+  --color-rose: #FF6FAF;
+  --color-mint: #FFD7EC;
+  --color-lilac: #FF99CB;
+  --color-purple: #FF4D8A;
 }
 
 * {
@@ -75,7 +77,7 @@ video {
 .btn {    
     border: none;
     color: whitesmoke;
-    background-color: var(--color-purple);
+    background-color: var(--color-purple); /* ahora rosa intenso */
     box-shadow: 0 4px 12px var(--color-purple);
 
     padding: 20px;
@@ -124,7 +126,7 @@ video {
 #typedId.active {
     outline: none;
     border-color: var(--color-purple);
-    box-shadow: 0 6px 18px rgba(13,99,68,0.18);
+    box-shadow: 0 6px 18px rgba(255,111,175,0.18);
 }
 
 #submitIdBtn {
@@ -134,7 +136,6 @@ video {
     padding: 1rem;
     font-weight: 600;
     box-shadow: 0 4px 12px var(--color-purple);
-
     
 }
 

@@ -1,22 +1,23 @@
 :root {
-  /* Palette from the attachment */
-  --color-forest: #0D6344;
-  --color-mint: #ddfae8;
-  --color-lilac: #CB97FF;
-  --color-purple: #7E3FBC;
+  /* Nueva paleta rosita */
+  --color-rose: #FF6FAF;        /* primary */
+  --color-rose-light: #FFD7EC;  /* primary light / muted */
+  --color-rose-acc: #FF99CB;    /* accent */
+  --color-rose-2: #FF4D8A;      /* accent-2 (más intenso) */
+
   /* semantic aliases */
-  --color-primary: var(--color-forest);
-  --color-muted: var(--color-mint);
-  --color-accent: var(--color-lilac);
-  --color-accent-2: var(--color-purple);
+  --color-primary: var(--color-rose);
+  --color-muted: var(--color-rose-light);
+  --color-accent: var(--color-rose-acc);
+  --color-accent-2: var(--color-rose-2);
 }
 
-.bg-primary { background-color: #0D6344; }
-.bg-primary-light { background-color: #ddfae8; }
-.text-primary { color: #0D6344; }
-.bg-accent { background-color: #7E3FBC; }
-.text-accent { color: #7E3FBC; }
-.text-accent-light { color: #CB97FF; }
-.border-primary { border-color: #0D6344; }
-.focus\:ring-primary:focus { --tw-ring-color: #0D6344; }
-.focus\:border-primary:focus { border-color: #0D6344; }
+.bg-primary { background-color: var(--color-primary); }
+.bg-primary-light { background-color: var(--color-muted); }
+.text-primary { color: var(--color-primary); }
+.bg-accent { background-color: var(--color-accent-2); }
+.text-accent { color: var(--color-accent-2); }
+.text-accent-light { color: var(--color-accent); }
+.border-primary { border-color: var(--color-primary); }
+.focus\:ring-primary:focus { --tw-ring-color: var(--color-primary); }
+.focus\:border-primary:focus { border-color: var(--color-primary); }

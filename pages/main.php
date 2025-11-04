@@ -49,7 +49,7 @@
                 </p>
                 
                 <h6 class="userStatsSub">Total distance travelled</h6>
-                <hr style='background-color:#7E3FBC;border-width:0;color:#7E3FBC;height:0.1rem;'/>
+                <hr style='background-color:var(--color-accent-2);border-width:0;color:var(--color-accent-2);height:0.1rem;'/>
             </div>
 
             <div id="userTotalCo2">
@@ -57,7 +57,7 @@
                     <b> 3.32 </b> KiloGrams
                 </p>
                 <h6 class="userStatsSub"> Total C02 saved</h6>
-                <hr style='background-color:#7E3FBC;border-width:0;color:#7E3FBC;height:0.1rem;'/>
+                <hr style='background-color:var(--color-accent-2);border-width:0;color:var(--color-accent-2);height:0.1rem;'/>
             </div> 
         </div>
 
@@ -129,7 +129,7 @@
                 <p>145 Km</p>
             </div>
 
-            <button id="reserve_button" class="bg-[#7E3FBC] text-white rounded flex px-8 py-4 font-bold">
+            <button id="reserve_button" class="rounded flex px-8 py-4 font-bold" style="background:var(--color-accent-2); color: white;">
                 Reserve
             </button>
         </div>
