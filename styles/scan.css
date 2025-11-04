@@ -13,7 +13,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    /* Forzar Comic Sans como fuente por defecto */
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
 
 body {

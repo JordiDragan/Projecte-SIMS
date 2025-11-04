@@ -8,7 +8,7 @@ tailwind.config = {
                 'accent-light': '#FF4D8A'
             },
             fontFamily: {
-                'montserrat': ['Montserrat', 'sans-serif']
+                'montserrat': ['"Comic Sans MS"', 'Comic Sans', 'cursive']
             }
         }
     }
